@@ -1,0 +1,7 @@
+blog_homepage:
+    path:     /blog
+    defaults: { _controller: BlogBundle:Default:index }
+
+about_page:
+    path: /about
+defaults: { _controller: BlogBundle:Default:about}
