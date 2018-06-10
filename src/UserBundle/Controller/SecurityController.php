@@ -48,22 +48,14 @@ class SecurityController extends Controller
         $form = $this->createForm(new UserType(), $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $passwordEncoder = $this->get('security.password_encoder');
-            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($password);
-            $roleRepository = $this->get('doctrine')
-                ->getManager()
-                ->getRepository(Role::class);
-            $userRole = $roleRepository->findOneBy(array(
-                'name' => 'user'
-            ));
-            $user->addRole($userRole);
-            $doctrine = $this->get('doctrine')->getEntityManager();
-            $doctrine->persist($user);
-            $doctrine->flush();
-            return $this->redirectToRoute('auth');
+            try {
+                $this->get('user.service')->createUser($user,'user');
+                return $this->redirectToRoute('auth');
+            } catch (\Exception $e) {
+             return $e;
+            }
         }
-        return $this->render('@User/Security/register.twig', array(
+        return $this->render('@User/Security/register.html.twig', array(
             'form' => $form->createView()
         ));
     }

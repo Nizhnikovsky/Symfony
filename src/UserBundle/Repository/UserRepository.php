@@ -19,4 +19,19 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     {
         return $this->findOneBy(array('username' => $username));
     }
+    
+    public function saveUser(User $user)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+        return $user->getId();
+    }
+    
+    public function deleteUser(User $user)
+    {
+        $em = $this->getEntityManager();
+        $em->remove($user);
+    }
+    
 }

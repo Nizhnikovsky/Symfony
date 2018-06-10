@@ -18,6 +18,7 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
         $em->flush();
         return $post->getId();
     }
+    
     /**
      * @param $author
      * @param \DateTime $date

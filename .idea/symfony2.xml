@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Symfony2PluginSettings">
+    <option name="pluginEnabled" value="true" />
+    <option name="profilerLocalUrl" value="http://127.0.0.1" />
+    <option name="profilerCsvPath" value="" />
+    <option name="profilerHttpUrl" value="http://127.0.0.1" />
+  </component>
+</project>

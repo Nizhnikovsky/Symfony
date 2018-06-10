@@ -1,4 +1,4 @@
 services:
-#    blog.example:
-#        class: BlogBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    post.service:
+        class: BlogBundle\Service\PostService
+        arguments: ["@doctrine.orm.entity_manager"]
